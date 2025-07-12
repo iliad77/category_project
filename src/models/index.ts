@@ -10,8 +10,16 @@ import { initInventory } from "./inventory";
 import { initProductAttr, initAttr } from "./attribute";
 import { initMenu } from "./MenuModel";
 import { productHistoryinit } from "./products";
+import dotenv from "dotenv";
 
-export const sequelize = new Sequelize("new_db", "postgres", "alialaei.com", {
+dotenv.config();
+
+const { DATABASE, DB_USERNAME, PASSWORD } = process.env;
+if (!DATABASE || !DB_USERNAME || !PASSWORD) {
+    throw new Error("missing required environment variables!");
+}
+
+export const sequelize = new Sequelize(DATABASE, DB_USERNAME, PASSWORD, {
     host: "localhost",
     dialect: "postgres",
     logging: console.log,
