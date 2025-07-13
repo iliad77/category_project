@@ -159,7 +159,7 @@ router.get(
                     attributes: [],
                 })
             );
-            console.log(includeAttrFilters[0].include);
+            // console.log(includeAttrFilters[0].include);
 
             //show attribute for products
             const showAttr = {
