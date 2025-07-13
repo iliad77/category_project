@@ -9,7 +9,8 @@ import orderRouter from "./router/cart_order";
 import attributeRouter from "./router/attribute";
 import menuRouter from "./router/menu";
 import cron from "node-cron";
-import { raise } from "./router/products";
+// import { raise } from "./router/products";
+import { backupScript } from "./utils";
 
 import dotenv from "dotenv";
 import { sequelize } from "./models";
@@ -30,7 +31,8 @@ app.use("/api/v0", menuRouter);
 
 const port: number = 3000;
 
-cron.schedule("*/5 * * * * *", raise);
+// cron.schedule("*/5 * * * * *", raise);
+cron.schedule("*/20 * * * * *", backupScript);
 
 // setInterval(background, 10000);
 
